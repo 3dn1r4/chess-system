@@ -44,10 +44,14 @@ public class ChessMatch {
 		if (!board.thereIsAPice(position)) {
 			throw new ChessException("Não exite peça na posição de origem.");
 		}
+		if(!board.piece(position).isThereAnyPossibleMove()) {
+			throw new ChessException("Nao existe movimento possivel para a peça escolhida.");	
+		}
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		
 	}
 
 	private void initialSetup() {
